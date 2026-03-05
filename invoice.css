@@ -1,0 +1,380 @@
+/* ===========================
+   基本レイアウト
+   =========================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* 横並び・縦並び */
+.yoko_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 10px;
+}
+.tate_container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* ===========================
+   タイトル行
+   =========================== */
+.title-row {
+  position: relative;
+  text-align: center;
+  margin-bottom: 6mm;
+}
+
+#invoice_title {
+  font-size: 30px;
+  margin: 0;
+  text-align: center;
+}
+
+/* 右上の発行日など */
+.title-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: right;
+  font-size: 11px;
+}
+
+.title-right p { margin: 0; }
+
+/* ===========================
+   ヘッダー
+   =========================== */
+/* ★ 請求先（左側）は左寄せ */
+#cstm_info {
+  text-align: left !important;
+  font-size: 12px;   /* ← 全体を小さく */
+  line-height: 1.3;
+}
+
+/* ★ 自社情報（右側）は右寄せ維持 */
+#own_info {
+  text-align: right;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+#header_1, #header_2 {
+    margin: 6px 20px;
+}
+#header_1 p, #header_2 p {
+    margin: 2px 0;
+    text-align: right;
+    line-height: 1.0;
+}
+/* header全体で右寄せしていた指定を殺す */
+#header_2 p {
+  text-align: inherit;
+}
+
+/* ===========================
+   支払期日
+   =========================== */
+.pay-limit {
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin: 2mm 10mm 4mm 0;
+    font-size: 12px;
+}
+
+/* ===========================
+   テーブル共通
+   =========================== */
+table {
+    width: 100%;
+    border-collapse: collapse;  /* ← 実線をきれいに保つ */
+    table-layout: fixed;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 6px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* ===========================
+   振込先
+   =========================== */
+.bank-box {
+    border: 1px solid #000;
+    padding: 6px 6px;
+    margin: 5px 10mm 5mm;
+    font-size: 11pt;
+    height: 12mm;
+
+    /* ★ 追加 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* ← 上下中央 */
+}
+
+.bank-title {
+  margin: 0 0 4px 0;   /* 下だけ少し */
+  font-size: 11pt;
+}
+
+.bank-info {
+  margin: 0;           /* ← これが重要 */
+  padding-left: 6px;  /* 少し左を空ける */
+  font-size: 11pt;
+}
+
+
+/* ===========================
+   サマリー
+   =========================== */
+.summary { margin-bottom: 4px; }
+
+/* ダミー列非表示 */
+.sum_table th:nth-child(7),
+.sum_table td:nth-child(7) {
+    border: none;
+    visibility: hidden;
+}
+
+/* サマリ表ヘッダー */
+.sum_table thead th {
+  background-color: #f2f2f2;   /* 薄グレー */
+  font-weight: 600;
+}
+
+/* ===========================
+   税内訳（サマリ・明細と完全揃え）
+   =========================== */
+
+/* 税内訳エリア：左右ズレ防止 */
+.tax-breakdown {
+  margin: 5mm 0 8mm;     /* 上 下だけ余白、左右は 0 */
+  width: 100%;
+}
+
+/* テーブル本体 */
+.tax-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 12px;
+}
+
+/* 共通セル */
+.tax-table td {
+  border: 1px solid #000;
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+
+/* 項目名（左列） */
+.tax-table td:nth-child(1) {
+  text-align: left;
+}
+
+/* 金額列（右寄せ） */
+.tax-table td:nth-child(2),
+.tax-table td:nth-child(3) {
+  text-align: right;
+}
+
+.detail-title {
+  font-size: 14px;   /* ← おすすめ：13〜15px */
+  font-weight: 600;
+  margin: 0;
+}
+
+.billing-period {
+  font-size: 13px;
+  margin: 2px 0 6px 0;
+  text-align: right;
+}
+
+/* ===========================
+   明細テーブル
+   =========================== */
+   
+.det-table {
+    margin-top: 0;
+    width: 100%;
+}
+
+/* ヘッダー下線を1本にする（ダブル防止） */
+thead tr th {
+    border-bottom: none;
+}
+
+.det-table th,
+.det-table td {
+    padding: 4px 3px;
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+/* 明細表ヘッダー */
+.det-table thead th {
+  background-color: #f2f2f2;   /* 薄グレー */
+  font-weight: 600;
+}
+
+/* 白 × 薄グレー ストライプ */
+.det-table .detail-body tr:nth-child(odd) td {
+    background-color: #ffffff;
+}
+.det-table .detail-body tr:nth-child(even) td {
+    background-color: #f7f7f7;
+}
+
+/* 品名列：左寄せ（td + th 両方） */
+.det-table td:nth-child(2),
+.det-table th:nth-child(2) {
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* 御買上額：右寄せ＋右余白 */
+.det-table td:nth-child(5),
+.det-table th:nth-child(5) {
+  text-align: right;
+  padding-right: 10px;
+}
+
+
+/* 列幅調整（最終バランス） */
+.det-table td:nth-child(1),
+.det-table th:nth-child(1) { width: 13%; }   /* 伝票日付：少し広め */
+
+.det-table td:nth-child(2),
+.det-table th:nth-child(2) { width: 50%; }   /* 品名：やや広め */
+
+.det-table td:nth-child(3),
+.det-table th:nth-child(3) { width: 10%; }    /* 数量：コンパクト */
+
+.det-table td:nth-child(4),
+.det-table th:nth-child(4) { width: 10%; }   /* 単価 */
+
+.det-table td:nth-child(5),
+.det-table th:nth-child(5) { width: 17%; }   /* 御買上額 */
+
+.neg-row {
+  color: #d32f2f !important;
+  font-weight: 600 !important;
+}
+
+/* ===========================
+   A4ページ（最重要）
+   =========================== */
+.a4page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 15mm 18mm;  /* ← ★ここを調整 */
+    margin: 0 auto;
+    background: white;
+    box-sizing: border-box;
+    page-break-after: always;
+}
+
+/* 内容枠 */
+.pdf-content {
+    width: 100%;
+    transform: none !important;
+}
+
+/* ===========================
+   フッター
+   =========================== */
+footer {
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    padding: 0 0 2mm 0;
+}
+footer #footer-message { text-align: right; margin-right: 10mm; }
+footer .page-number {
+  margin-right: 0 !important;
+}
+
+
+/* ===========================
+   印刷用
+   =========================== */
+@media print {
+
+    @page {
+        size: A4;
+        margin: 0;  /* 余白ゼロ → ページレイアウトが安定する */
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        width: 210mm;
+    }
+
+    .a4page {
+        width: 210mm !important;
+        min-height: 297mm !important;
+        padding: 15mm 18mm;
+        box-sizing: border-box;
+        page-break-after: always;
+    }
+
+    .pdf-content {
+        transform: none !important;
+        width: 100% !important;
+    }
+
+    .det-table th,
+    .det-table td {
+        padding: 3px 2px !important;
+        font-size: 10px !important;
+        line-height: 1.1 !important;
+    }
+
+    th, td {
+        padding: 4px !important;
+        font-size: 11px !important;
+    }
+
+    .det-table td:nth-child(2),
+    .det-table th:nth-child(2) {
+        padding-left: 10px !important;
+    }
+    .det-table td:nth-child(5),
+    .det-table th:nth-child(5) {
+        padding-right: 10px !important;
+    }
+    /* サマリ表ヘッダー */
+    .sum_table thead th,
+    .det-table thead th {
+        background-color: #e6e6e6 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .det-table .detail-body tr:nth-child(odd) td {
+        background-color: #ffffff !important;
+        -webkit-print-color-adjust: exact;
+    }
+    .det-table .detail-body tr:nth-child(even) td {
+        background-color: #f7f7f7 !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .neg-row {
+        color: #d32f2f !important;
+        font-weight: 600 !important;
+    }
+
+    /* ★ td / th に負けないよう span を明示 */
+    .det-table td span.neg-row {
+        color: #d32f2f !important;
+    }
+}

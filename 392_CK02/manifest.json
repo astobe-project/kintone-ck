@@ -1,0 +1,16 @@
+{
+  "app": "392",
+  "scope": "ALL",
+  "desktop": {
+    "js": [
+      "aggregateByDenpyoNo.js",
+      "printInvoice.js",
+      "reCals.js"
+    ],
+    "css": []
+  },
+  "mobile": {
+    "js": [],
+    "css": []
+  }
+}

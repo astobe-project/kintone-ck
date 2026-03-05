@@ -1,0 +1,7 @@
+{
+  "name": "kintone-ck-392-ck02",
+  "private": true,
+  "scripts": {
+    "deploy": "node ../../scripts/kintone-deploy.js manifest.json ../../.env"
+  }
+}

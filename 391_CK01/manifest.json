@@ -1,0 +1,19 @@
+{
+  "app": "391",
+  "scope": "ALL",
+  "desktop": {
+    "js": [
+      "dataCheck.js",
+      "distributeData.js",
+      "inputDate.js",
+      "makeInvoice.js"
+    ],
+    "css": [
+      "btn.css"
+    ]
+  },
+  "mobile": {
+    "js": [],
+    "css": []
+  }
+}

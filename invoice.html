@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="invoice.css">
+    <title>請求書</title>
+</head>
+<body>
+
+    <!-- ====== 1ページ目用ヘッダー ====== -->
+    <header>
+
+        <div class="title-row">
+            <h1 id="invoice_title">御 請 求 書</h1>
+            <div class="title-right">
+                <p id="issue-date"></p>
+            </div>
+        </div>
+
+        <div class="yoko_container" id="header_2">
+            <div class="tate_container" id="cstm_info">
+                <p>${郵便番号}</p>
+                <p>${住所}</p>
+                <p>${請求先名} 御中</p>
+                <div id="message">
+                    <p>　</p>
+                    <p>お客様コードNo　：　${顧客No}</p>
+                    <p>下記の通り御請求申し上げます。</p>
+                </div>
+            </div>
+
+            <div class="tate_container" id="own_info">
+                <p>株式会社ちっきん</p>
+                <p>〒 330-0074</p>
+                <p>埼玉県さいたま市浦和区北浦和３－５－１</p>
+                <p>TEL＆FAX 048-825-2205</p>
+                <p>担当者：遠藤</p>
+                <p>登録番号：T7030001015351</p>
+            </div>
+        </div>
+
+        <!-- ★ 振込先情報 ＆ 支払期日 ★ -->
+        <div class="bank-box">
+            <p class="bank-title">※お振込先※</p>
+            <p class="bank-info">
+                ${振込先}
+            </p>
+        </div>
+        <p class="pay-limit">
+            御支払期日 ${支払期日} 迄
+        </p>
+    </header>
+
+    <!-- ====== サマリー（1ページ目のみ） ====== -->
+    <main>
+        <div class="summary">
+            <table class="sum_table">
+                <thead>
+                    <tr>
+                        <th>前回御請求額</th>
+                        <th>今回御入金額</th>
+                        <th>繰越金額</th>
+                        <th>今回御買上額</th>
+                        <th>消費税</th>
+                        <th>今回御請求額</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>${前回御請求額}</td>
+                        <td>${御入金額}</td>
+                        <td>${繰越金額}</td>
+                        <td>${今回御請求額_税抜}</td>
+                        <td>${消費税}</td>
+                        <td>${今回御請求額}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ====== 消費税内訳 表示エリア ====== -->
+        <div class="tax-breakdown">
+            <table class="tax-table">
+                <tbody>
+                    <tr>
+                        <td>食品（軽減税率対象）</td>
+                        <td class="tax-amount">${販売額_8}</td>
+                        <td class="tax-tax">${消費税_8}</td>
+                    </tr>
+                    <tr>
+                        <td>配送料（１０%対象）</td>
+                        <td class="tax-amount">${販売額_10}</td>
+                        <td class="tax-tax">${消費税_10}</td>
+                    </tr>
+                    <tr>
+                        <td>その他（１０%対象）</td>
+                        <td class="tax-amount">${その他_10}</td>
+                        <td class="tax-tax">${消費税その他_10}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ====== 明細テーブル ====== -->
+        <div class="detail">
+
+            <!-- ★ ここは JS がページ番号を動的に書き替える領域（2ページ目以降でも使用） -->
+            <div class="detail-header">
+                <h2 class="detail-title">明細  (${店名} 御中)</h2>
+                <div class="page-number"></div>
+            </div>
+
+            <table class="det-table">
+                <thead>
+                    <tr>
+                        <th>伝票日付</th>
+                        <th>品名</th>
+                        <th>数量</th>
+                        <th>単価</th>
+                        <th>御買上額</th>
+                    </tr>
+                </thead>
+
+                <tbody class="detail-body">
+                    <tr>
+                        <td>${日付}</td>
+                        <td>${商品名}</td>
+                        <td>${数量}</td>
+                        <td>${販売単価}</td>
+                        <td>${販売額}</td>
+                    </tr>
+                </tbody>
+
+                <tfoot></tfoot>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- ====== フッター（ページ末尾） ====== -->
+    <footer>
+    <div id="footer-message"></div>
+    <span class="page-number"></span>  <!-- ← これを右下表示対象にする -->
+    </footer>
+</body>
+</html>

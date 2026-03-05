@@ -1,0 +1,65 @@
+/* =========================================
+   共通ボタンスタイル
+   ========================================= */
+.invoice-import-btn,
+.invoice-export-btn {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+
+  /* 3D効果 */
+  box-shadow: 0 4px rgba(0,0,0,0.3);
+  transition: all 0.15s ease;
+
+  color: #fff;
+}
+
+/* 共通ホバー */
+.invoice-import-btn:hover,
+.invoice-export-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* 共通押し込み */
+.invoice-import-btn:active,
+.invoice-export-btn:active {
+  box-shadow: 0 2px rgba(0,0,0,0.3);
+  transform: translateY(2px);
+}
+
+/* disabled */
+.invoice-import-btn:disabled,
+.invoice-export-btn:disabled {
+  background: #cccccc !important;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   色：青（テキスト→明細取込み）
+   ========================================= */
+.invoice-import-btn {
+  background: linear-gradient(180deg, #4a90e2, #357ABD);
+  box-shadow: 0 4px #2c5d8a;
+}
+
+.invoice-import-btn:active {
+  box-shadow: 0 2px #2c5d8a;
+}
+
+
+/* =========================================
+   色：緑（明細→請求集計アプリ反映）
+   ========================================= */
+.invoice-export-btn {
+  background: linear-gradient(180deg, #4CAF50, #3E8E41);
+  box-shadow: 0 4px #2d6b30;
+}
+
+.invoice-export-btn:active {
+  box-shadow: 0 2px #2d6b30;
+}
